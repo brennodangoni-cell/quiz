@@ -11,6 +11,10 @@ Esta pasta contém uma cópia do que o navegador recebe publicamente em https://
 - `captured/public-assets/`: arquivos públicos originais baixados para análise.
 - `captured/formatted/`: versões formatadas dos JS/CSS públicos para leitura.
 - `captured/clone-info.json`: relatório do clone, chunks dinâmicos e patches aplicados.
+- `acelerador/index.html`: clone local do upsell público `sjt-upsell-1-b`.
+- `ofertaespecial/index.html`: clone local do downsell público `sjt-downsell-1-b`.
+- `offer-assets/`: assets públicos do WordPress/Elementor usados pelas páginas de oferta.
+- `captured/offer-pages/`: HTML original das páginas de oferta e manifesto dos assets baixados.
 
 O clone local usa o motor compilado real do quiz e recebeu um patch pequeno para permitir renderizar fora do domínio original. Para testar:
 
@@ -19,3 +23,8 @@ python -m http.server 4173 --bind 127.0.0.1
 ```
 
 Depois abra `http://127.0.0.1:4173/`.
+
+Rotas das ofertas:
+
+- `http://127.0.0.1:4173/acelerador/`
+- `http://127.0.0.1:4173/ofertaespecial/`
