@@ -1,0 +1,829 @@
+{
+  "title": "Seca Jejum",
+  "domain": "quiz.secajejumturbo.site",
+  "steps": [
+    {
+      "i": 1,
+      "id": "T24uhO",
+      "title": "p0",
+      "types": [
+        "text",
+        "clear",
+        "image",
+        "button"
+      ]
+    },
+    {
+      "i": 2,
+      "id": "g3dbOK",
+      "title": "p0.1",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 3,
+      "id": "nPf88y",
+      "title": "p1",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 4,
+      "id": "oY7B2B",
+      "title": "p1-b",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 5,
+      "id": "MI2N4z",
+      "title": "p2",
+      "types": [
+        "text",
+        "image",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 6,
+      "id": "l2apWm",
+      "title": "p2-b",
+      "types": [
+        "text",
+        "image",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 7,
+      "id": "wZobMO",
+      "title": "p3",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 8,
+      "id": "jjdTc1",
+      "title": "p3-b",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 9,
+      "id": "BoUAHs",
+      "title": "p4",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 10,
+      "id": "U1W1Ee",
+      "title": "p4-b",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 11,
+      "id": "aIABmd",
+      "title": "p5",
+      "types": [
+        "text",
+        "image",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 12,
+      "id": "abRcc0",
+      "title": "p5-b",
+      "types": [
+        "text",
+        "image",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 13,
+      "id": "651If0",
+      "title": "p6",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 14,
+      "id": "orKHyQ",
+      "title": "p6-b",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 15,
+      "id": "CxtF8R",
+      "title": "p7",
+      "types": [
+        "options",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 16,
+      "id": "hWcWcI",
+      "title": "p7=b",
+      "types": [
+        "options",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 17,
+      "id": "xaVGE5",
+      "title": "p8",
+      "types": [
+        "text",
+        "image",
+        "options"
+      ]
+    },
+    {
+      "i": 18,
+      "id": "6JkSIT",
+      "title": "p8-b",
+      "types": [
+        "text",
+        "image",
+        "options"
+      ]
+    },
+    {
+      "i": 19,
+      "id": "sV2RJs",
+      "title": "p9",
+      "types": [
+        "text",
+        "image",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 20,
+      "id": "tJklkD",
+      "title": "p9-b",
+      "types": [
+        "text",
+        "image",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 21,
+      "id": "5AvHhn",
+      "title": "p10",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 22,
+      "id": "BF2gTw",
+      "title": "p10-b",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 23,
+      "id": "MDi7hR",
+      "title": "p11",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 24,
+      "id": "tTDmcn",
+      "title": "p11-b",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 25,
+      "id": "oT4UxL",
+      "title": "p12",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 26,
+      "id": "jWqfRD",
+      "title": "p12=b",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 27,
+      "id": "nBfwBa",
+      "title": "p13",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 28,
+      "id": "XJKl7w",
+      "title": "p13-b",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 29,
+      "id": "g7riaG",
+      "title": "p14",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 30,
+      "id": "cD2NT6",
+      "title": "p14-b",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 31,
+      "id": "8Psouk",
+      "title": "p15",
+      "types": [
+        "options",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 32,
+      "id": "fjVTUg",
+      "title": "p15-b",
+      "types": [
+        "options",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 33,
+      "id": "3So4u7",
+      "title": "p16",
+      "types": [
+        "text",
+        "options",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 34,
+      "id": "TxNd0U",
+      "title": "p16-b",
+      "types": [
+        "text",
+        "options",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 35,
+      "id": "gvWJlf",
+      "title": "p17",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 36,
+      "id": "EeIzDp",
+      "title": "p17-b",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 37,
+      "id": "YX3wkS",
+      "title": "p18",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 38,
+      "id": "WRuttf",
+      "title": "p18-b",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 39,
+      "id": "7y8EOF",
+      "title": "p19",
+      "types": [
+        "text",
+        "image",
+        "options"
+      ]
+    },
+    {
+      "i": 40,
+      "id": "2kNHPp",
+      "title": "p19-b",
+      "types": [
+        "text",
+        "image",
+        "options"
+      ]
+    },
+    {
+      "i": 41,
+      "id": "11h5FZ",
+      "title": "p20",
+      "types": [
+        "text",
+        "image",
+        "options"
+      ]
+    },
+    {
+      "i": 42,
+      "id": "Yxj96W",
+      "title": "p20-b",
+      "types": [
+        "text",
+        "image",
+        "options"
+      ]
+    },
+    {
+      "i": 43,
+      "id": "ytkkSo",
+      "title": "p21",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 44,
+      "id": "zaExRz",
+      "title": "p21-b",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 45,
+      "id": "tAupaA",
+      "title": "p22",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 46,
+      "id": "UUNCx8",
+      "title": "p22-b",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 47,
+      "id": "NjN3qp",
+      "title": "p23",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 48,
+      "id": "U6DEHb",
+      "title": "p23-b",
+      "types": [
+        "options"
+      ]
+    },
+    {
+      "i": 49,
+      "id": "RxqG2O",
+      "title": "p24",
+      "types": [
+        "text",
+        "image",
+        "options"
+      ]
+    },
+    {
+      "i": 50,
+      "id": "GsBXtj",
+      "title": "p24-b",
+      "types": [
+        "text",
+        "image",
+        "options"
+      ]
+    },
+    {
+      "i": 51,
+      "id": "Pn4ays",
+      "title": "p26",
+      "types": [
+        "text",
+        "image",
+        "options"
+      ]
+    },
+    {
+      "i": 52,
+      "id": "sfA5i9",
+      "title": "p26-b",
+      "types": [
+        "text",
+        "image",
+        "options"
+      ]
+    },
+    {
+      "i": 53,
+      "id": "HqHptw",
+      "title": "p27",
+      "types": [
+        "options",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 54,
+      "id": "wkFvDa",
+      "title": "p27-b",
+      "types": [
+        "options",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 55,
+      "id": "sE035g",
+      "title": "p28",
+      "types": [
+        "options",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 56,
+      "id": "aJS9Sf",
+      "title": "p28-b",
+      "types": [
+        "options",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 57,
+      "id": "zTPnWg",
+      "title": "p29",
+      "types": [
+        "text",
+        "image",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 58,
+      "id": "s7NbFM",
+      "title": "p29-b",
+      "types": [
+        "text",
+        "image",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 59,
+      "id": "HRk8VN",
+      "title": "p30",
+      "types": [
+        "options",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 60,
+      "id": "HHwovV",
+      "title": "p30-b",
+      "types": [
+        "options",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 61,
+      "id": "zMVOi8",
+      "title": "p31",
+      "types": [
+        "options",
+        "clear"
+      ]
+    },
+    {
+      "i": 62,
+      "id": "Dxvvj1",
+      "title": "p31-b",
+      "types": [
+        "options",
+        "clear"
+      ]
+    },
+    {
+      "i": 63,
+      "id": "L5qb4e",
+      "title": "p32",
+      "types": [
+        "text",
+        "height",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 64,
+      "id": "8osXf7",
+      "title": "p32-b",
+      "types": [
+        "text",
+        "height",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 65,
+      "id": "YCHlNP",
+      "title": "p33",
+      "types": [
+        "text",
+        "weight",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 66,
+      "id": "Jk4pui",
+      "title": "p33-b",
+      "types": [
+        "text",
+        "weight",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 67,
+      "id": "GC3x1J",
+      "title": "p34",
+      "types": [
+        "text",
+        "weight",
+        "alert",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 68,
+      "id": "AJ5vEZ",
+      "title": "p34-b",
+      "types": [
+        "text",
+        "weight",
+        "alert",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 69,
+      "id": "xQQiZl",
+      "title": "p35",
+      "types": [
+        "text",
+        "field",
+        "clear",
+        "alert",
+        "button"
+      ]
+    },
+    {
+      "i": 70,
+      "id": "BD7GSv",
+      "title": "p35-b",
+      "types": [
+        "text",
+        "field",
+        "clear",
+        "alert",
+        "button"
+      ]
+    },
+    {
+      "i": 71,
+      "id": "UjbVXd",
+      "title": "p36",
+      "types": [
+        "text",
+        "clear",
+        "metric",
+        "image",
+        "alert",
+        "button"
+      ]
+    },
+    {
+      "i": 72,
+      "id": "VUaI4N",
+      "title": "p36-b",
+      "types": [
+        "text",
+        "clear",
+        "metric",
+        "image",
+        "alert",
+        "button"
+      ]
+    },
+    {
+      "i": 73,
+      "id": "PREcpy",
+      "title": "p37",
+      "types": [
+        "options",
+        "clear"
+      ]
+    },
+    {
+      "i": 74,
+      "id": "OOlfmF",
+      "title": "p37-b",
+      "types": [
+        "options",
+        "clear"
+      ]
+    },
+    {
+      "i": 75,
+      "id": "cFrEoi",
+      "title": "p38",
+      "types": [
+        "text",
+        "charts",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 76,
+      "id": "3Akgkd",
+      "title": "p38-b",
+      "types": [
+        "text",
+        "charts",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 77,
+      "id": "gK13wl",
+      "title": "p39",
+      "types": [
+        "text",
+        "loading",
+        "clear",
+        "carousel"
+      ]
+    },
+    {
+      "i": 78,
+      "id": "ULv8eJ",
+      "title": "p39-b",
+      "types": [
+        "text",
+        "loading",
+        "clear",
+        "carousel"
+      ]
+    },
+    {
+      "i": 79,
+      "id": "JtaS61",
+      "title": "p40",
+      "types": [
+        "text",
+        "charts",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 80,
+      "id": "f4uXVk",
+      "title": "p40-b",
+      "types": [
+        "text",
+        "charts",
+        "clear",
+        "button"
+      ]
+    },
+    {
+      "i": 81,
+      "id": "lIGNk6",
+      "title": "p41",
+      "types": [
+        "text",
+        "image",
+        "metric",
+        "clear",
+        "alert",
+        "arguments",
+        "price",
+        "timer",
+        "button"
+      ]
+    },
+    {
+      "i": 82,
+      "id": "UuEeP1",
+      "title": "p41-b",
+      "types": [
+        "text",
+        "image",
+        "metric",
+        "clear",
+        "alert",
+        "arguments",
+        "price",
+        "timer",
+        "button"
+      ]
+    }
+  ],
+  "types": [
+    "text",
+    "clear",
+    "image",
+    "button",
+    "options",
+    "height",
+    "weight",
+    "alert",
+    "field",
+    "metric",
+    "charts",
+    "loading",
+    "carousel",
+    "arguments",
+    "price",
+    "timer"
+  ]
+}

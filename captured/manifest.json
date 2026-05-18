@@ -1,0 +1,238 @@
+{
+  "sourceUrl": "https://quiz.secajejumturbo.site/",
+  "capturedAt": "2026-05-18T01:14:59.275Z",
+  "entryHtml": "index.html",
+  "originalHtml": "captured/original.html",
+  "assets": [
+    {
+      "url": "https://inlead.digital/_next/static/media/e4af272ccee01ff0-s.p.woff2",
+      "localPath": "captured\\public-assets\\inlead.digital__next_static_media_e4af272ccee01ff0-s.p.woff2",
+      "formattedPath": null,
+      "sourcemap": null,
+      "ok": true,
+      "error": null,
+      "contentType": "font/woff2",
+      "bytes": 48432
+    },
+    {
+      "url": "https://inlead.digital/_next/static/css/582688c53174d0c1.css",
+      "localPath": "captured\\public-assets\\inlead.digital__next_static_css_582688c53174d0c1.css",
+      "formattedPath": "captured\\formatted\\inlead.digital__next_static_css_582688c53174d0c1.css.formatted.css",
+      "sourcemap": null,
+      "ok": true,
+      "error": null,
+      "contentType": "text/css; charset=utf-8",
+      "bytes": 152246
+    },
+    {
+      "url": "https://inlead.digital/_next/static/css/83d54731525ad5cf.css",
+      "localPath": "captured\\public-assets\\inlead.digital__next_static_css_83d54731525ad5cf.css",
+      "formattedPath": "captured\\formatted\\inlead.digital__next_static_css_83d54731525ad5cf.css.formatted.css",
+      "sourcemap": null,
+      "ok": true,
+      "error": null,
+      "contentType": "text/css; charset=utf-8",
+      "bytes": 10226
+    },
+    {
+      "url": "https://inlead.digital/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "localPath": "captured\\public-assets\\inlead.digital__next_static_chunks_polyfills-42372ed130431b0a.js",
+      "formattedPath": "captured\\formatted\\inlead.digital__next_static_chunks_polyfills-42372ed130431b0a.js.formatted.js",
+      "sourcemap": null,
+      "ok": true,
+      "error": null,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 112594
+    },
+    {
+      "url": "https://inlead.digital/_next/static/chunks/webpack-bccdf3d6915dded3.js",
+      "localPath": "captured\\public-assets\\inlead.digital__next_static_chunks_webpack-bccdf3d6915dded3.js",
+      "formattedPath": "captured\\formatted\\inlead.digital__next_static_chunks_webpack-bccdf3d6915dded3.js.formatted.js",
+      "sourcemap": null,
+      "ok": true,
+      "error": null,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 51762
+    },
+    {
+      "url": "https://inlead.digital/_next/static/chunks/framework-b21a9a9d949ebca4.js",
+      "localPath": "captured\\public-assets\\inlead.digital__next_static_chunks_framework-b21a9a9d949ebca4.js",
+      "formattedPath": "captured\\formatted\\inlead.digital__next_static_chunks_framework-b21a9a9d949ebca4.js.formatted.js",
+      "sourcemap": null,
+      "ok": true,
+      "error": null,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 139851
+    },
+    {
+      "url": "https://inlead.digital/_next/static/chunks/main-3cf205d1b9424f88.js",
+      "localPath": "captured\\public-assets\\inlead.digital__next_static_chunks_main-3cf205d1b9424f88.js",
+      "formattedPath": "captured\\formatted\\inlead.digital__next_static_chunks_main-3cf205d1b9424f88.js.formatted.js",
+      "sourcemap": null,
+      "ok": true,
+      "error": null,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 135123
+    },
+    {
+      "url": "https://inlead.digital/_next/static/chunks/pages/_app-b1a9998cb32a1f37.js",
+      "localPath": "captured\\public-assets\\inlead.digital__next_static_chunks_pages_app-b1a9998cb32a1f37.js",
+      "formattedPath": "captured\\formatted\\inlead.digital__next_static_chunks_pages_app-b1a9998cb32a1f37.js.formatted.js",
+      "sourcemap": null,
+      "ok": true,
+      "error": null,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 79626
+    },
+    {
+      "url": "https://inlead.digital/_next/static/chunks/30645-24b4af8158d13628.js",
+      "localPath": "captured\\public-assets\\inlead.digital__next_static_chunks_30645-24b4af8158d13628.js",
+      "formattedPath": "captured\\formatted\\inlead.digital__next_static_chunks_30645-24b4af8158d13628.js.formatted.js",
+      "sourcemap": null,
+      "ok": true,
+      "error": null,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 10505
+    },
+    {
+      "url": "https://inlead.digital/_next/static/chunks/11831-ec0ecf948b80fd2e.js",
+      "localPath": "captured\\public-assets\\inlead.digital__next_static_chunks_11831-ec0ecf948b80fd2e.js",
+      "formattedPath": "captured\\formatted\\inlead.digital__next_static_chunks_11831-ec0ecf948b80fd2e.js.formatted.js",
+      "sourcemap": null,
+      "ok": true,
+      "error": null,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 39098
+    },
+    {
+      "url": "https://inlead.digital/_next/static/chunks/65025-2b0eab84093eb25a.js",
+      "localPath": "captured\\public-assets\\inlead.digital__next_static_chunks_65025-2b0eab84093eb25a.js",
+      "formattedPath": "captured\\formatted\\inlead.digital__next_static_chunks_65025-2b0eab84093eb25a.js.formatted.js",
+      "sourcemap": null,
+      "ok": true,
+      "error": null,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 46723
+    },
+    {
+      "url": "https://inlead.digital/_next/static/chunks/89674-ec2e92db7e440963.js",
+      "localPath": "captured\\public-assets\\inlead.digital__next_static_chunks_89674-ec2e92db7e440963.js",
+      "formattedPath": "captured\\formatted\\inlead.digital__next_static_chunks_89674-ec2e92db7e440963.js.formatted.js",
+      "sourcemap": null,
+      "ok": true,
+      "error": null,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 127319
+    },
+    {
+      "url": "https://inlead.digital/_next/static/chunks/32413-a455ec39e1a2920b.js",
+      "localPath": "captured\\public-assets\\inlead.digital__next_static_chunks_32413-a455ec39e1a2920b.js",
+      "formattedPath": "captured\\formatted\\inlead.digital__next_static_chunks_32413-a455ec39e1a2920b.js.formatted.js",
+      "sourcemap": null,
+      "ok": true,
+      "error": null,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 82072
+    },
+    {
+      "url": "https://inlead.digital/_next/static/chunks/4770-065027577b49f625.js",
+      "localPath": "captured\\public-assets\\inlead.digital__next_static_chunks_4770-065027577b49f625.js",
+      "formattedPath": "captured\\formatted\\inlead.digital__next_static_chunks_4770-065027577b49f625.js.formatted.js",
+      "sourcemap": null,
+      "ok": true,
+      "error": null,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 98363
+    },
+    {
+      "url": "https://inlead.digital/_next/static/chunks/75573-546908afd80e5ddf.js",
+      "localPath": "captured\\public-assets\\inlead.digital__next_static_chunks_75573-546908afd80e5ddf.js",
+      "formattedPath": "captured\\formatted\\inlead.digital__next_static_chunks_75573-546908afd80e5ddf.js.formatted.js",
+      "sourcemap": null,
+      "ok": true,
+      "error": null,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 20425
+    },
+    {
+      "url": "https://inlead.digital/_next/static/chunks/90575-beba4437be29c955.js",
+      "localPath": "captured\\public-assets\\inlead.digital__next_static_chunks_90575-beba4437be29c955.js",
+      "formattedPath": "captured\\formatted\\inlead.digital__next_static_chunks_90575-beba4437be29c955.js.formatted.js",
+      "sourcemap": null,
+      "ok": true,
+      "error": null,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 20659
+    },
+    {
+      "url": "https://inlead.digital/_next/static/chunks/30896-cdb87922febd3139.js",
+      "localPath": "captured\\public-assets\\inlead.digital__next_static_chunks_30896-cdb87922febd3139.js",
+      "formattedPath": "captured\\formatted\\inlead.digital__next_static_chunks_30896-cdb87922febd3139.js.formatted.js",
+      "sourcemap": null,
+      "ok": true,
+      "error": null,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 64433
+    },
+    {
+      "url": "https://inlead.digital/_next/static/chunks/47951-86c5879aa26bc672.js",
+      "localPath": "captured\\public-assets\\inlead.digital__next_static_chunks_47951-86c5879aa26bc672.js",
+      "formattedPath": "captured\\formatted\\inlead.digital__next_static_chunks_47951-86c5879aa26bc672.js.formatted.js",
+      "sourcemap": null,
+      "ok": true,
+      "error": null,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 16529
+    },
+    {
+      "url": "https://inlead.digital/_next/static/chunks/32159-29e399059d61f593.js",
+      "localPath": "captured\\public-assets\\inlead.digital__next_static_chunks_32159-29e399059d61f593.js",
+      "formattedPath": "captured\\formatted\\inlead.digital__next_static_chunks_32159-29e399059d61f593.js.formatted.js",
+      "sourcemap": null,
+      "ok": true,
+      "error": null,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 10675
+    },
+    {
+      "url": "https://inlead.digital/_next/static/chunks/70165-9a4c35af5ad5ac76.js",
+      "localPath": "captured\\public-assets\\inlead.digital__next_static_chunks_70165-9a4c35af5ad5ac76.js",
+      "formattedPath": "captured\\formatted\\inlead.digital__next_static_chunks_70165-9a4c35af5ad5ac76.js.formatted.js",
+      "sourcemap": null,
+      "ok": true,
+      "error": null,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 127596
+    },
+    {
+      "url": "https://inlead.digital/_next/static/chunks/pages/%5B...all%5D-312063730c154fcd.js",
+      "localPath": "captured\\public-assets\\inlead.digital__next_static_chunks_pages_%5B...all%5D-312063730c154fcd.js",
+      "formattedPath": "captured\\formatted\\inlead.digital__next_static_chunks_pages_%5B...all%5D-312063730c154fcd.js.formatted.js",
+      "sourcemap": null,
+      "ok": true,
+      "error": null,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 7366
+    },
+    {
+      "url": "https://inlead.digital/_next/static/l_Gk1bhu8_UlzoInK7X45/_buildManifest.js",
+      "localPath": "captured\\public-assets\\inlead.digital__next_static_l_Gk1bhu8_UlzoInK7X45_buildManifest.js",
+      "formattedPath": "captured\\formatted\\inlead.digital__next_static_l_Gk1bhu8_UlzoInK7X45_buildManifest.js.formatted.js",
+      "sourcemap": null,
+      "ok": true,
+      "error": null,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 5574
+    },
+    {
+      "url": "https://inlead.digital/_next/static/l_Gk1bhu8_UlzoInK7X45/_ssgManifest.js",
+      "localPath": "captured\\public-assets\\inlead.digital__next_static_l_Gk1bhu8_UlzoInK7X45_ssgManifest.js",
+      "formattedPath": "captured\\formatted\\inlead.digital__next_static_l_Gk1bhu8_UlzoInK7X45_ssgManifest.js.formatted.js",
+      "sourcemap": null,
+      "ok": true,
+      "error": null,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 340
+    }
+  ]
+}
