@@ -12,6 +12,7 @@ const checkoutLinks = {
   downsellReject: "https://www.cakto.com.br/",
 };
 
+const googleTagId = "AW-18172872375";
 const trustBadgeImage = "334d0cf4-fe39-481c-8377-5da3b8ebe9e6";
 const opaqueTrustBadgeUrl = `/offer-assets/ofertafit.com/wp-content/uploads/2025/09/${trustBadgeImage}-white.webp`;
 
@@ -118,6 +119,29 @@ function upsertHeadSnippet(html, id, snippet) {
   return cleaned.includes("</head>")
     ? cleaned.replace("</head>", `${snippet}\n</head>`)
     : `${snippet}\n${cleaned}`;
+}
+
+function googleTagSnippet() {
+  return `<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=${googleTagId}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '${googleTagId}');
+</script>`;
+}
+
+function upsertGoogleTag(html) {
+  if (
+    html.includes(`https://www.googletagmanager.com/gtag/js?id=${googleTagId}`) ||
+    html.includes(`gtag('config', '${googleTagId}')`)
+  ) {
+    return html;
+  }
+
+  return html.replace(/<head>/i, `<head>\n${googleTagSnippet()}\n`);
 }
 
 function mobileTrustBadgeFixStyle() {
@@ -250,6 +274,7 @@ function useOpaqueTrustBadge(html) {
 async function patchOfferPage(relativePath, urls) {
   const filePath = path.join(root, relativePath);
   let html = await readFile(filePath, "utf8");
+  html = upsertGoogleTag(html);
   html = replaceOfferActions(html, urls);
   if (relativePath.startsWith("acelerador/")) {
     html = useOpaqueTrustBadge(html);
@@ -273,8 +298,13 @@ async function main() {
     const nextPayload = encodeFunnelPayload(funnel, currentPayload);
     indexHtml = indexHtml.replace(/("f":")[^"]+(")/, `$1${nextPayload}$2`);
 
-    await writeFile(indexPath, indexHtml);
     await writeFile(path.join(root, "captured", "funnel.json"), `${JSON.stringify(funnel, null, 2)}\n`);
+  }
+
+  const taggedIndexHtml = upsertGoogleTag(indexHtml);
+  if (taggedIndexHtml !== indexHtml || replacements > 0) {
+    indexHtml = taggedIndexHtml;
+    await writeFile(indexPath, indexHtml);
   }
 
   await patchOfferPage("acelerador/index.html", {

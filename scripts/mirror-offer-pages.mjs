@@ -29,6 +29,7 @@ const checkoutLinks = {
   downsellReject: "https://www.cakto.com.br/",
 };
 
+const googleTagId = "AW-18172872375";
 const trustBadgeImage = "334d0cf4-fe39-481c-8377-5da3b8ebe9e6";
 const opaqueTrustBadgeUrl = `/offer-assets/ofertafit.com/wp-content/uploads/2025/09/${trustBadgeImage}-white.webp`;
 
@@ -258,6 +259,29 @@ function upsertHeadSnippet(html, id, snippet) {
   return cleaned.includes("</head>")
     ? cleaned.replace("</head>", `${snippet}\n</head>`)
     : `${snippet}\n${cleaned}`;
+}
+
+function googleTagSnippet() {
+  return `<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=${googleTagId}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '${googleTagId}');
+</script>`;
+}
+
+function upsertGoogleTag(html) {
+  if (
+    html.includes(`https://www.googletagmanager.com/gtag/js?id=${googleTagId}`) ||
+    html.includes(`gtag('config', '${googleTagId}')`)
+  ) {
+    return html;
+  }
+
+  return html.replace(/<head>/i, `<head>\n${googleTagSnippet()}\n`);
 }
 
 function upsertBodyScript(html, id, script) {
@@ -505,6 +529,7 @@ async function downloadQueuedAssets() {
 async function writePage(page, originalHtml) {
   let html = rewriteRoutes(originalHtml);
   html = rewriteAssets(html);
+  html = upsertGoogleTag(html);
   html = applyCheckoutOverrides(html, page.route);
   if (page.route === "acelerador") {
     html = useOpaqueTrustBadge(html);
