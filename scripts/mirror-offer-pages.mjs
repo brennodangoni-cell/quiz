@@ -42,6 +42,10 @@ function unique(values) {
   return [...new Set(values.filter(Boolean))];
 }
 
+function checkoutPath(checkoutUrl) {
+  return new URL(checkoutUrl).pathname.replace(/^\/+/, "");
+}
+
 function decodeHtmlEntities(value) {
   return value
     .replaceAll("&amp;", "&")
@@ -212,11 +216,12 @@ function setAttr(tag, name, value) {
   return tag.replace(/>$/, ` ${name}="${escaped}">`);
 }
 
-function patchCaktoButtons(html, { acceptUrl, rejectUrl }) {
+function patchCaktoButtons(html, { acceptUrl, rejectUrl, offerId }) {
   return html
     .replace(/<cakto-upsell-accept\b[^>]*>/gi, (tag) => {
       let patched = setAttr(tag, "upsell-accept-url", acceptUrl);
       patched = setAttr(patched, "upsell-reject-url", rejectUrl);
+      patched = setAttr(patched, "offer-id", offerId);
       return patched;
     })
     .replace(/<cakto-upsell-reject\b[^>]*>/gi, (tag) => setAttr(tag, "upsell-reject-url", rejectUrl));
@@ -227,6 +232,7 @@ function applyCheckoutOverrides(html, route) {
     return patchCaktoButtons(html, {
       acceptUrl: checkoutLinks.upsell,
       rejectUrl: checkoutLinks.upsellReject,
+      offerId: checkoutPath(checkoutLinks.upsell),
     });
   }
 
@@ -234,10 +240,80 @@ function applyCheckoutOverrides(html, route) {
     return patchCaktoButtons(html, {
       acceptUrl: checkoutLinks.downsell,
       rejectUrl: checkoutLinks.downsellReject,
+      offerId: checkoutPath(checkoutLinks.downsell),
     });
   }
 
   return html;
+}
+
+function upsertHeadSnippet(html, id, snippet) {
+  const pattern = new RegExp(`\\n?<style id="${id}">[\\s\\S]*?<\\/style>\\n?`, "g");
+  const cleaned = html.replace(pattern, "\n");
+  return cleaned.includes("</head>")
+    ? cleaned.replace("</head>", `${snippet}\n</head>`)
+    : `${snippet}\n${cleaned}`;
+}
+
+function upsertBodyScript(html, id, script) {
+  const pattern = new RegExp(`\\n?<script id="${id}">[\\s\\S]*?<\\/script>\\n?`, "g");
+  const cleaned = html.replace(pattern, "\n");
+  return cleaned.includes("</body>")
+    ? cleaned.replace("</body>", `${script}\n</body>`)
+    : `${cleaned}\n${script}\n`;
+}
+
+function checkoutOverrideScript({ acceptUrl, rejectUrl }) {
+  return `<script id="checkout-link-override">
+(function () {
+  var acceptUrl = "${acceptUrl}";
+  var rejectUrl = "${rejectUrl}";
+
+  function findCaktoHost(event, tagName) {
+    var path = typeof event.composedPath === "function" ? event.composedPath() : [];
+    for (var index = 0; index < path.length; index += 1) {
+      var node = path[index];
+      if (node && node.tagName === tagName) return node;
+    }
+    return event.target && event.target.closest ? event.target.closest(tagName.toLowerCase()) : null;
+  }
+
+  document.addEventListener("click", function (event) {
+    var accept = findCaktoHost(event, "CAKTO-UPSELL-ACCEPT");
+    var reject = findCaktoHost(event, "CAKTO-UPSELL-REJECT");
+    var nextUrl = accept ? acceptUrl : reject ? rejectUrl : "";
+    if (!nextUrl) return;
+
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    window.location.href = nextUrl;
+  }, true);
+})();
+</script>`;
+}
+
+function mobileTrustBadgeFixStyle() {
+  return `<style id="mobile-trust-badge-fix">
+@media (max-width: 767px) {
+  .elementor-690 .elementor-element.elementor-element-61f40e2 {
+    background: #fff !important;
+    margin-bottom: 16px !important;
+    position: relative;
+    z-index: 2;
+  }
+
+  .elementor-690 .elementor-element.elementor-element-61f40e2 .elementor-widget-container,
+  .elementor-690 .elementor-element.elementor-element-61f40e2 img {
+    background: #fff !important;
+  }
+
+  .elementor-690 .elementor-element.elementor-element-c747981 {
+    margin-top: 8px !important;
+    position: relative;
+    z-index: 1;
+  }
+}
+</style>`;
 }
 
 function injectLocalRoutingPatch(html, route) {
@@ -323,6 +399,19 @@ async function writePage(page, originalHtml) {
   html = rewriteAssets(html);
   html = applyCheckoutOverrides(html, page.route);
   html = injectLocalRoutingPatch(html, page.route);
+  if (page.route === "acelerador") {
+    html = upsertHeadSnippet(html, "mobile-trust-badge-fix", mobileTrustBadgeFixStyle());
+    html = upsertBodyScript(html, "checkout-link-override", checkoutOverrideScript({
+      acceptUrl: checkoutLinks.upsell,
+      rejectUrl: checkoutLinks.upsellReject,
+    }));
+  }
+  if (page.route === "ofertaespecial") {
+    html = upsertBodyScript(html, "checkout-link-override", checkoutOverrideScript({
+      acceptUrl: checkoutLinks.downsell,
+      rejectUrl: checkoutLinks.downsellReject,
+    }));
+  }
   html = normalizeText(html);
   const outFile = path.join(root, page.route, "index.html");
   await mkdir(path.dirname(outFile), { recursive: true });

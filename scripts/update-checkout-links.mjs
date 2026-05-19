@@ -14,6 +14,10 @@ const checkoutLinks = {
 
 const oldFrontCheckout = "https://pay.cakto.com.br/xfdgzcm_556067";
 
+function checkoutPath(checkoutUrl) {
+  return new URL(checkoutUrl).pathname.replace(/^\/+/, "");
+}
+
 function md5(buffer) {
   return crypto.createHash("md5").update(buffer).digest();
 }
@@ -112,18 +116,90 @@ function setAttr(tag, name, value) {
   return tag.replace(/>$/, ` ${name}="${escaped}">`);
 }
 
-function patchCaktoButtons(html, { acceptUrl, rejectUrl }) {
+function patchCaktoButtons(html, { acceptUrl, rejectUrl, offerId }) {
   return html
     .replace(/<cakto-upsell-accept\b[^>]*>/gi, (tag) => {
       let patched = setAttr(tag, "upsell-accept-url", acceptUrl);
       patched = setAttr(patched, "upsell-reject-url", rejectUrl);
+      patched = setAttr(patched, "offer-id", offerId);
       return patched;
     })
     .replace(/<cakto-upsell-reject\b[^>]*>/gi, (tag) => setAttr(tag, "upsell-reject-url", rejectUrl));
 }
 
 function patchRoutingScript(html, rejectUrl) {
-  return html.replaceAll('button.setAttribute("upsell-reject-url", "/ofertaespecial/");', `button.setAttribute("upsell-reject-url", "${rejectUrl}");`);
+  return html
+    .replaceAll('button.setAttribute("upsell-reject-url", "/ofertaespecial/");', `button.setAttribute("upsell-reject-url", "${rejectUrl}");`)
+    .replaceAll('button.setAttribute("upsell-reject-url", "https://secajejum.info/ofertaespecial");', `button.setAttribute("upsell-reject-url", "${rejectUrl}");`);
+}
+
+function upsertHeadSnippet(html, id, snippet) {
+  const pattern = new RegExp(`\\n?<style id="${id}">[\\s\\S]*?<\\/style>\\n?`, "g");
+  const cleaned = html.replace(pattern, "\n");
+  return cleaned.includes("</head>")
+    ? cleaned.replace("</head>", `${snippet}\n</head>`)
+    : `${snippet}\n${cleaned}`;
+}
+
+function upsertBodyScript(html, id, script) {
+  const pattern = new RegExp(`\\n?<script id="${id}">[\\s\\S]*?<\\/script>\\n?`, "g");
+  const cleaned = html.replace(pattern, "\n");
+  return cleaned.includes("</body>")
+    ? cleaned.replace("</body>", `${script}\n</body>`)
+    : `${cleaned}\n${script}\n`;
+}
+
+function checkoutOverrideScript({ acceptUrl, rejectUrl }) {
+  return `<script id="checkout-link-override">
+(function () {
+  var acceptUrl = "${acceptUrl}";
+  var rejectUrl = "${rejectUrl}";
+
+  function findCaktoHost(event, tagName) {
+    var path = typeof event.composedPath === "function" ? event.composedPath() : [];
+    for (var index = 0; index < path.length; index += 1) {
+      var node = path[index];
+      if (node && node.tagName === tagName) return node;
+    }
+    return event.target && event.target.closest ? event.target.closest(tagName.toLowerCase()) : null;
+  }
+
+  document.addEventListener("click", function (event) {
+    var accept = findCaktoHost(event, "CAKTO-UPSELL-ACCEPT");
+    var reject = findCaktoHost(event, "CAKTO-UPSELL-REJECT");
+    var nextUrl = accept ? acceptUrl : reject ? rejectUrl : "";
+    if (!nextUrl) return;
+
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    window.location.href = nextUrl;
+  }, true);
+})();
+</script>`;
+}
+
+function mobileTrustBadgeFixStyle() {
+  return `<style id="mobile-trust-badge-fix">
+@media (max-width: 767px) {
+  .elementor-690 .elementor-element.elementor-element-61f40e2 {
+    background: #fff !important;
+    margin-bottom: 16px !important;
+    position: relative;
+    z-index: 2;
+  }
+
+  .elementor-690 .elementor-element.elementor-element-61f40e2 .elementor-widget-container,
+  .elementor-690 .elementor-element.elementor-element-61f40e2 img {
+    background: #fff !important;
+  }
+
+  .elementor-690 .elementor-element.elementor-element-c747981 {
+    margin-top: 8px !important;
+    position: relative;
+    z-index: 1;
+  }
+}
+</style>`;
 }
 
 async function patchOfferPage(relativePath, urls) {
@@ -131,6 +207,10 @@ async function patchOfferPage(relativePath, urls) {
   let html = await readFile(filePath, "utf8");
   html = patchCaktoButtons(html, urls);
   if (relativePath.startsWith("acelerador/")) html = patchRoutingScript(html, urls.rejectUrl);
+  html = upsertBodyScript(html, "checkout-link-override", checkoutOverrideScript(urls));
+  if (relativePath.startsWith("acelerador/")) {
+    html = upsertHeadSnippet(html, "mobile-trust-badge-fix", mobileTrustBadgeFixStyle());
+  }
   await writeFile(filePath, html);
 }
 
@@ -156,10 +236,12 @@ async function main() {
   await patchOfferPage("acelerador/index.html", {
     acceptUrl: checkoutLinks.upsell,
     rejectUrl: checkoutLinks.upsellReject,
+    offerId: checkoutPath(checkoutLinks.upsell),
   });
   await patchOfferPage("ofertaespecial/index.html", {
     acceptUrl: checkoutLinks.downsell,
     rejectUrl: checkoutLinks.downsellReject,
+    offerId: checkoutPath(checkoutLinks.downsell),
   });
 
   console.log(JSON.stringify({
