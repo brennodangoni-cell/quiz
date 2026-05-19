@@ -29,6 +29,9 @@ const checkoutLinks = {
   downsellReject: "https://www.cakto.com.br/",
 };
 
+const trustBadgeImage = "334d0cf4-fe39-481c-8377-5da3b8ebe9e6";
+const opaqueTrustBadgeUrl = `/offer-assets/ofertafit.com/wp-content/uploads/2025/09/${trustBadgeImage}-white.webp`;
+
 const assetMap = new Map();
 const assetRecords = new Map();
 const pendingAssets = [];
@@ -299,18 +302,34 @@ function mobileTrustBadgeFixStyle() {
 @media (max-width: 767px) {
   .elementor-690 .elementor-element.elementor-element-61f40e2 {
     background: #fff !important;
-    margin-bottom: 16px !important;
+    isolation: isolate;
+    margin-bottom: 24px !important;
+    overflow: visible;
+    padding: 8px 0 12px !important;
     position: relative;
-    z-index: 2;
+    z-index: 3;
+  }
+
+  .elementor-690 .elementor-element.elementor-element-61f40e2::before {
+    background: #fff;
+    content: "";
+    inset: -14px -24px -22px;
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
   }
 
   .elementor-690 .elementor-element.elementor-element-61f40e2 .elementor-widget-container,
   .elementor-690 .elementor-element.elementor-element-61f40e2 img {
     background: #fff !important;
+    display: block;
+    position: relative;
+    z-index: 1;
   }
 
   .elementor-690 .elementor-element.elementor-element-c747981 {
-    margin-top: 8px !important;
+    background: #fff !important;
+    margin-top: 20px !important;
     position: relative;
     z-index: 1;
   }
@@ -392,6 +411,17 @@ function replaceOfferActions(html, options) {
 
   output = upsertHeadSnippet(output, "direct-checkout-style", directCheckoutStyle());
   return output;
+}
+
+function useOpaqueTrustBadge(html) {
+  return html.replace(
+    /<img\b[^>]*\bsrc="[^"]*334d0cf4-fe39-481c-8377-5da3b8ebe9e6\.webp"[^>]*>/i,
+    (tag) =>
+      tag
+        .replace(/\bsrc="[^"]*334d0cf4-fe39-481c-8377-5da3b8ebe9e6\.webp"/i, `src="${opaqueTrustBadgeUrl}"`)
+        .replace(/\s+srcset="[^"]*334d0cf4-fe39-481c-8377-5da3b8ebe9e6[^"]*"/i, "")
+        .replace(/\s+sizes="[^"]*"/i, "")
+  );
 }
 
 function injectLocalRoutingPatch(html, route) {
@@ -477,6 +507,7 @@ async function writePage(page, originalHtml) {
   html = rewriteAssets(html);
   html = applyCheckoutOverrides(html, page.route);
   if (page.route === "acelerador") {
+    html = useOpaqueTrustBadge(html);
     html = upsertHeadSnippet(html, "mobile-trust-badge-fix", mobileTrustBadgeFixStyle());
   }
   html = normalizeText(html);
