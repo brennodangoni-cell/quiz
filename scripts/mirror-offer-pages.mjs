@@ -22,6 +22,13 @@ const pages = [
   },
 ];
 
+const checkoutLinks = {
+  upsell: "https://pay.cakto.com.br/354fsst_890464",
+  upsellReject: "https://secajejum.info/ofertaespecial",
+  downsell: "https://pay.cakto.com.br/34x5vvy",
+  downsellReject: "https://www.cakto.com.br/",
+};
+
 const assetMap = new Map();
 const assetRecords = new Map();
 const pendingAssets = [];
@@ -192,10 +199,45 @@ function rewriteRoutes(html) {
 
   output = output.replace(
     /(<cakto-upsell-reject\b[^>]*\bupsell-reject-url=)["'][^"']*["']([^>]*>\s*Não,\s*não\s*quero\s*acelerar\s*meu\s*emagrecimento)/i,
-    '$1"/ofertaespecial/"$2',
+    `$1"${checkoutLinks.upsellReject}"$2`,
   );
 
   return output;
+}
+
+function setAttr(tag, name, value) {
+  const escaped = value.replaceAll("&", "&amp;");
+  const attrRe = new RegExp(`\\b${name}=(["'])[^"']*\\1`, "i");
+  if (attrRe.test(tag)) return tag.replace(attrRe, `${name}="${escaped}"`);
+  return tag.replace(/>$/, ` ${name}="${escaped}">`);
+}
+
+function patchCaktoButtons(html, { acceptUrl, rejectUrl }) {
+  return html
+    .replace(/<cakto-upsell-accept\b[^>]*>/gi, (tag) => {
+      let patched = setAttr(tag, "upsell-accept-url", acceptUrl);
+      patched = setAttr(patched, "upsell-reject-url", rejectUrl);
+      return patched;
+    })
+    .replace(/<cakto-upsell-reject\b[^>]*>/gi, (tag) => setAttr(tag, "upsell-reject-url", rejectUrl));
+}
+
+function applyCheckoutOverrides(html, route) {
+  if (route === "acelerador") {
+    return patchCaktoButtons(html, {
+      acceptUrl: checkoutLinks.upsell,
+      rejectUrl: checkoutLinks.upsellReject,
+    });
+  }
+
+  if (route === "ofertaespecial") {
+    return patchCaktoButtons(html, {
+      acceptUrl: checkoutLinks.downsell,
+      rejectUrl: checkoutLinks.downsellReject,
+    });
+  }
+
+  return html;
 }
 
 function injectLocalRoutingPatch(html, route) {
@@ -207,7 +249,7 @@ function injectLocalRoutingPatch(html, route) {
     document.querySelectorAll("cakto-upsell-reject").forEach(function (button) {
       var text = (button.textContent || "").toLowerCase();
       if (text.indexOf("não, não quero acelerar") !== -1) {
-        button.setAttribute("upsell-reject-url", "/ofertaespecial/");
+        button.setAttribute("upsell-reject-url", "${checkoutLinks.upsellReject}");
       }
     });
   }
@@ -279,6 +321,7 @@ async function downloadQueuedAssets() {
 async function writePage(page, originalHtml) {
   let html = rewriteRoutes(originalHtml);
   html = rewriteAssets(html);
+  html = applyCheckoutOverrides(html, page.route);
   html = injectLocalRoutingPatch(html, page.route);
   html = normalizeText(html);
   const outFile = path.join(root, page.route, "index.html");

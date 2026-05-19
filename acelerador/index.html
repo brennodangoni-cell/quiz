@@ -181,16 +181,16 @@ src="https://www.facebook.com/tr?id=1173079407984546&ev=PageView&noscript=1"
       <cakto-upsell-accept
         bg-color="#348848ff"
         text-color="#ffffff"
-        upsell-accept-url="members_area"
+        upsell-accept-url="https://pay.cakto.com.br/354fsst_890464"
         offer-id="3cqxaet"
         app-base-url="https://app.cakto.com.br"
         offer-type="upsell"
-        upsell-reject-url="/ofertaespecial/"
+        upsell-reject-url="https://secajejum.info/ofertaespecial"
       >
         QUERO EMAGRECER 10X MAIS RÁPIDO!
       </cakto-upsell-accept>
       <cakto-upsell-reject
-        upsell-reject-url="/ofertaespecial/"
+        upsell-reject-url="https://secajejum.info/ofertaespecial"
       >
         Não, não quero acelerar meu emagrecimento
       </cakto-upsell-reject>
@@ -321,7 +321,7 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
     document.querySelectorAll("cakto-upsell-reject").forEach(function (button) {
       var text = (button.textContent || "").toLowerCase();
       if (text.indexOf("não, não quero acelerar") !== -1) {
-        button.setAttribute("upsell-reject-url", "/ofertaespecial/");
+        button.setAttribute("upsell-reject-url", "https://secajejum.info/ofertaespecial");
       }
     });
   }

@@ -28,3 +28,11 @@ Rotas das ofertas:
 
 - `http://127.0.0.1:4173/acelerador/`
 - `http://127.0.0.1:4173/ofertaespecial/`
+
+Checkouts configurados:
+
+- Quiz/front: `https://pay.cakto.com.br/zxwkisn_890004`
+- Upsell `/acelerador/`: `https://pay.cakto.com.br/354fsst_890464`
+- Recusa do upsell: `https://secajejum.info/ofertaespecial`
+- Downsell `/ofertaespecial/`: `https://pay.cakto.com.br/34x5vvy`
+- Recusa do downsell: `https://www.cakto.com.br/`
