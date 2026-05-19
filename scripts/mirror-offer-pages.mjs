@@ -229,18 +229,20 @@ function patchCaktoButtons(html, { acceptUrl, rejectUrl, offerId }) {
 
 function applyCheckoutOverrides(html, route) {
   if (route === "acelerador") {
-    return patchCaktoButtons(html, {
+    return replaceOfferActions(html, {
       acceptUrl: checkoutLinks.upsell,
       rejectUrl: checkoutLinks.upsellReject,
-      offerId: checkoutPath(checkoutLinks.upsell),
+      acceptText: "QUERO EMAGRECER 10X MAIS RÁPIDO!",
+      rejectText: "Não, não quero acelerar meu emagrecimento",
     });
   }
 
   if (route === "ofertaespecial") {
-    return patchCaktoButtons(html, {
+    return replaceOfferActions(html, {
       acceptUrl: checkoutLinks.downsell,
       rejectUrl: checkoutLinks.downsellReject,
-      offerId: checkoutPath(checkoutLinks.downsell),
+      acceptText: "QUERO DESBLOQUEAR TUDO COM 50% DE DESCONTO!",
+      rejectText: "Não, não quero aproveitar essa última oportunidade.",
     });
   }
 
@@ -314,6 +316,82 @@ function mobileTrustBadgeFixStyle() {
   }
 }
 </style>`;
+}
+
+function directCheckoutStyle() {
+  return `<style id="direct-checkout-style">
+.offer-checkout-actions {
+  display: grid;
+  gap: 18px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.offer-checkout-accept {
+  align-items: center;
+  background: #348848;
+  border: 1px solid #1e4e2d;
+  border-radius: 4px;
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.22);
+  color: #fff !important;
+  display: flex;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  justify-content: center;
+  line-height: 1.2;
+  min-height: 96px;
+  padding: 18px 16px;
+  text-align: center;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.offer-checkout-reject {
+  color: #111 !important;
+  display: block;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 20px;
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: underline !important;
+}
+
+@media (max-width: 767px) {
+  .offer-checkout-actions {
+    gap: 20px;
+  }
+
+  .offer-checkout-accept {
+    font-size: 25px;
+    min-height: 101px;
+  }
+
+  .offer-checkout-reject {
+    font-size: 19px;
+  }
+}
+</style>`;
+}
+
+function directCheckoutBlock({ acceptUrl, rejectUrl, acceptText, rejectText }) {
+  return `<div class="offer-checkout-actions">
+  <a class="offer-checkout-accept" href="${acceptUrl}">${acceptText}</a>
+  <a class="offer-checkout-reject" href="${rejectUrl}">${rejectText}</a>
+</div>`;
+}
+
+function replaceOfferActions(html, options) {
+  let output = html
+    .replace(/\n?<script id="checkout-link-override">[\s\S]*?<\/script>\n?/g, "\n")
+    .replace(/\n?<script>\s*\(function \(\) \{\s*function patchRejectButtons\(\) \{[\s\S]*?patchRejectButtons\(\);\s*\}\)\(\);\s*<\/script>\n?/g, "\n")
+    .replace(/\s*<script type="text\/javascript" src="https:\/\/caktoscripts\.nyc3\.cdn\.digitaloceanspaces\.com\/upsell\.js"><\/script>/g, "")
+    .replace(/\s*<!-- Descomente o código abaixo para estilzar o css dos botões -->\s*<!-- <style>[\s\S]*?<\/style> -->/g, "")
+    .replace(/<cakto-upsell-buttons>[\s\S]*?<\/cakto-upsell-buttons>/i, directCheckoutBlock(options));
+
+  output = upsertHeadSnippet(output, "direct-checkout-style", directCheckoutStyle());
+  return output;
 }
 
 function injectLocalRoutingPatch(html, route) {
@@ -398,19 +476,8 @@ async function writePage(page, originalHtml) {
   let html = rewriteRoutes(originalHtml);
   html = rewriteAssets(html);
   html = applyCheckoutOverrides(html, page.route);
-  html = injectLocalRoutingPatch(html, page.route);
   if (page.route === "acelerador") {
     html = upsertHeadSnippet(html, "mobile-trust-badge-fix", mobileTrustBadgeFixStyle());
-    html = upsertBodyScript(html, "checkout-link-override", checkoutOverrideScript({
-      acceptUrl: checkoutLinks.upsell,
-      rejectUrl: checkoutLinks.upsellReject,
-    }));
-  }
-  if (page.route === "ofertaespecial") {
-    html = upsertBodyScript(html, "checkout-link-override", checkoutOverrideScript({
-      acceptUrl: checkoutLinks.downsell,
-      rejectUrl: checkoutLinks.downsellReject,
-    }));
   }
   html = normalizeText(html);
   const outFile = path.join(root, page.route, "index.html");

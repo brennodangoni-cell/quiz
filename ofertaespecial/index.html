@@ -113,7 +113,62 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 @font-face{font-family:Manrope;font-style:normal;font-weight:200 800;font-display:fallback;src:url('/offer-assets/ofertafit.com/wp-content/themes/twentytwentyfive/assets/fonts/manrope/Manrope-VariableFont_wght.woff2') format('woff2');}
 @font-face{font-family:"Fira Code";font-style:normal;font-weight:300 700;font-display:fallback;src:url('/offer-assets/ofertafit.com/wp-content/themes/twentytwentyfive/assets/fonts/fira-code/FiraCode-VariableFont_wght.woff2') format('woff2');}
 </style>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" /></head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<style id="direct-checkout-style">
+.offer-checkout-actions {
+  display: grid;
+  gap: 18px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.offer-checkout-accept {
+  align-items: center;
+  background: #348848;
+  border: 1px solid #1e4e2d;
+  border-radius: 4px;
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.22);
+  color: #fff !important;
+  display: flex;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  justify-content: center;
+  line-height: 1.2;
+  min-height: 96px;
+  padding: 18px 16px;
+  text-align: center;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.offer-checkout-reject {
+  color: #111 !important;
+  display: block;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 20px;
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: underline !important;
+}
+
+@media (max-width: 767px) {
+  .offer-checkout-actions {
+    gap: 20px;
+  }
+
+  .offer-checkout-accept {
+    font-size: 25px;
+    min-height: 101px;
+  }
+
+  .offer-checkout-reject {
+    font-size: 19px;
+  }
+}
+</style>
+</head>
 <body class="wp-singular page-template page-template-elementor_canvas page page-id-692 wp-embed-responsive wp-theme-twentytwentyfive elementor-default elementor-template-canvas elementor-kit-5 elementor-page elementor-page-692">
 			<div data-elementor-type="wp-page" data-elementor-id="692" class="elementor elementor-692">
 				<div class="elementor-element elementor-element-0d3f7b1 e-flex e-con-boxed e-con e-parent" data-id="0d3f7b1" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
@@ -275,32 +330,6 @@ src="https://www.facebook.com/tr?id=1173079407984546&ev=PageView&noscript=1"
       </ul>
     </section>
   </main>
-<script id="checkout-link-override">
-(function () {
-  var acceptUrl = "https://pay.cakto.com.br/34x5vvy";
-  var rejectUrl = "https://www.cakto.com.br/";
-
-  function findCaktoHost(event, tagName) {
-    var path = typeof event.composedPath === "function" ? event.composedPath() : [];
-    for (var index = 0; index < path.length; index += 1) {
-      var node = path[index];
-      if (node && node.tagName === tagName) return node;
-    }
-    return event.target && event.target.closest ? event.target.closest(tagName.toLowerCase()) : null;
-  }
-
-  document.addEventListener("click", function (event) {
-    var accept = findCaktoHost(event, "CAKTO-UPSELL-ACCEPT");
-    var reject = findCaktoHost(event, "CAKTO-UPSELL-REJECT");
-    var nextUrl = accept ? acceptUrl : reject ? rejectUrl : "";
-    if (!nextUrl) return;
-
-    event.preventDefault();
-    event.stopImmediatePropagation();
-    window.location.href = nextUrl;
-  }, true);
-})();
-</script>
 </body>
 </html>				</div>
 				</div>
@@ -314,45 +343,10 @@ src="https://www.facebook.com/tr?id=1173079407984546&ev=PageView&noscript=1"
 
  <div>
  <meta charset="UTF-8">
-   <cakto-upsell-buttons>
-      <cakto-upsell-accept
-        bg-color="#348848ff"
-        text-color="#ffffff"
-        upsell-accept-url="https://pay.cakto.com.br/34x5vvy"
-        offer-id="34x5vvy"
-        app-base-url="https://app.cakto.com.br"
-        offer-type="downsell"
-        upsell-reject-url="https://www.cakto.com.br/"
-      >
-        QUERO DESBLOQUEAR TUDO COM 50% DE DESCONTO!
-      </cakto-upsell-accept>
-      <cakto-upsell-reject
-        upsell-reject-url="https://www.cakto.com.br/"
-      >
-        Não, não quero aproveitar essa última oportunidade.
-      </cakto-upsell-reject>
-    </cakto-upsell-buttons>
-
-
-     <!-- Descomente o código abaixo para estilzar o css dos botões -->
-      <!-- <style>
-          /* Botão de aceitar upsell */
-          cakto-upsell-accept::part(button) {
-              background-color: red;
-              color: white;
-              /* Ajuste do tamanho do botão
-              Descomente o código abaixo para definir um tamanho customizado para o botão */
-              /* width: 100vw; */
-          }
-
-          /* Botão de rejeitar upsell */
-          cakto-upsell-reject::part(button) {
-              background-color: blue;
-              color: white;
-          }
-      </style> -->
-
-  <script type="text/javascript" src="https://caktoscripts.nyc3.cdn.digitaloceanspaces.com/upsell.js"></script>
+   <div class="offer-checkout-actions">
+  <a class="offer-checkout-accept" href="https://pay.cakto.com.br/34x5vvy">QUERO DESBLOQUEAR TUDO COM 50% DE DESCONTO!</a>
+  <a class="offer-checkout-reject" href="https://www.cakto.com.br/">Não, não quero aproveitar essa última oportunidade.</a>
+</div>
  </div>
 				</div>
 				<div class="elementor-element elementor-element-6a8b442 elementor-widget elementor-widget-spacer" data-id="6a8b442" data-element_type="widget" data-e-type="widget" data-widget_type="spacer.default">
