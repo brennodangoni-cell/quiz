@@ -14,6 +14,7 @@ const checkoutLinks = {
 
 const googleTagId = "AW-18172872375";
 const googleTagManagerId = "GTM-TKB3KG6W";
+const facebookPixelId = "1345365947541734";
 const trustBadgeImage = "334d0cf4-fe39-481c-8377-5da3b8ebe9e6";
 const opaqueTrustBadgeUrl = `/offer-assets/ofertafit.com/wp-content/uploads/2025/09/${trustBadgeImage}-white.webp`;
 
@@ -178,6 +179,72 @@ function upsertGoogleTagManager(html) {
   return output;
 }
 
+function facebookPixelHeadSnippet() {
+  return `<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '${facebookPixelId}');
+  fbq('track', 'PageView');
+</script>
+<!-- End Facebook Pixel Code -->`;
+}
+
+function facebookPixelBodySnippet() {
+  return `<!-- Facebook Pixel Code (noscript) -->
+<noscript>
+  <img height="1" width="1" style="display:none"
+       src="https://www.facebook.com/tr?id=${facebookPixelId}&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Facebook Pixel Code (noscript) -->`;
+}
+
+function removeFacebookPixels(html) {
+  return html.replace(
+    /\n?[ \t]*<!--\s*(?:Meta|Facebook) Pixel Code\s*-->[\s\S]*?<!--\s*End (?:Meta|Facebook) Pixel Code\s*-->\s*/gi,
+    "\n"
+  );
+}
+
+function upsertFacebookPixel(html) {
+  let output = removeFacebookPixels(html);
+  output = output.replace(
+    /\n?<!-- Facebook Pixel Code \(noscript\) -->[\s\S]*?<!-- End Facebook Pixel Code \(noscript\) -->\n?/gi,
+    "\n"
+  );
+
+  if (!output.includes(`fbq('init', '${facebookPixelId}')`)) {
+    if (output.includes("<!-- End Google Tag Manager -->")) {
+      output = output.replace("<!-- End Google Tag Manager -->", `<!-- End Google Tag Manager -->\n${facebookPixelHeadSnippet()}`);
+    } else {
+      output = output.replace(/<head>/i, `<head>\n${facebookPixelHeadSnippet()}\n`);
+    }
+  }
+
+  if (!output.includes(`https://www.facebook.com/tr?id=${facebookPixelId}&ev=PageView&noscript=1`)) {
+    if (output.includes("<!-- End Google Tag Manager (noscript) -->")) {
+      output = output.replace(
+        "<!-- End Google Tag Manager (noscript) -->",
+        `<!-- End Google Tag Manager (noscript) -->\n${facebookPixelBodySnippet()}`
+      );
+    } else {
+      output = output.replace(/<body\b[^>]*>/i, (match) => `${match}\n${facebookPixelBodySnippet()}`);
+    }
+  }
+
+  return output;
+}
+
+function trimWhitespaceOnlyLines(html) {
+  return html.replace(/^[\t ]+$/gm, "");
+}
+
 function mobileTrustBadgeFixStyle() {
   return `<style id="mobile-trust-badge-fix">
 @media (max-width: 767px) {
@@ -310,11 +377,13 @@ async function patchOfferPage(relativePath, urls) {
   let html = await readFile(filePath, "utf8");
   html = upsertGoogleTag(html);
   html = upsertGoogleTagManager(html);
+  html = upsertFacebookPixel(html);
   html = replaceOfferActions(html, urls);
   if (relativePath.startsWith("acelerador/")) {
     html = useOpaqueTrustBadge(html);
     html = upsertHeadSnippet(html, "mobile-trust-badge-fix", mobileTrustBadgeFixStyle());
   }
+  html = trimWhitespaceOnlyLines(html);
   await writeFile(filePath, html);
 }
 
@@ -336,7 +405,7 @@ async function main() {
     await writeFile(path.join(root, "captured", "funnel.json"), `${JSON.stringify(funnel, null, 2)}\n`);
   }
 
-  const taggedIndexHtml = upsertGoogleTagManager(upsertGoogleTag(indexHtml));
+  const taggedIndexHtml = upsertFacebookPixel(upsertGoogleTagManager(upsertGoogleTag(indexHtml)));
   if (taggedIndexHtml !== indexHtml || replacements > 0) {
     indexHtml = taggedIndexHtml;
     await writeFile(indexPath, indexHtml);
