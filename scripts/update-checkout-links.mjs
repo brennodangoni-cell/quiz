@@ -13,6 +13,7 @@ const checkoutLinks = {
 };
 
 const googleTagId = "AW-18172872375";
+const googleTagManagerId = "GTM-TKB3KG6W";
 const trustBadgeImage = "334d0cf4-fe39-481c-8377-5da3b8ebe9e6";
 const opaqueTrustBadgeUrl = `/offer-assets/ofertafit.com/wp-content/uploads/2025/09/${trustBadgeImage}-white.webp`;
 
@@ -142,6 +143,39 @@ function upsertGoogleTag(html) {
   }
 
   return html.replace(/<head>/i, `<head>\n${googleTagSnippet()}\n`);
+}
+
+function googleTagManagerHeadSnippet() {
+  return `<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${googleTagManagerId}');</script>
+<!-- End Google Tag Manager -->`;
+}
+
+function googleTagManagerBodySnippet() {
+  return `<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${googleTagManagerId}"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->`;
+}
+
+function upsertGoogleTagManager(html) {
+  const headPattern = new RegExp(
+    `\\n?<!-- Google Tag Manager -->\\s*<script>\\(function\\(w,d,s,l,i\\)[\\s\\S]*?${googleTagManagerId}[\\s\\S]*?<!-- End Google Tag Manager -->\\n?`,
+    "g"
+  );
+  const bodyPattern = new RegExp(
+    `\\n?<!-- Google Tag Manager \\(noscript\\) -->\\s*<noscript><iframe src="https://www\\.googletagmanager\\.com/ns\\.html\\?id=${googleTagManagerId}"[\\s\\S]*?<!-- End Google Tag Manager \\(noscript\\) -->\\n?`,
+    "g"
+  );
+
+  let output = html.replace(headPattern, "\n").replace(bodyPattern, "\n");
+  output = output.replace(/<head>/i, `<head>\n${googleTagManagerHeadSnippet()}\n`);
+  output = output.replace(/<body\b[^>]*>/i, (match) => `${match}\n${googleTagManagerBodySnippet()}`);
+  return output;
 }
 
 function mobileTrustBadgeFixStyle() {
@@ -275,6 +309,7 @@ async function patchOfferPage(relativePath, urls) {
   const filePath = path.join(root, relativePath);
   let html = await readFile(filePath, "utf8");
   html = upsertGoogleTag(html);
+  html = upsertGoogleTagManager(html);
   html = replaceOfferActions(html, urls);
   if (relativePath.startsWith("acelerador/")) {
     html = useOpaqueTrustBadge(html);
@@ -301,7 +336,7 @@ async function main() {
     await writeFile(path.join(root, "captured", "funnel.json"), `${JSON.stringify(funnel, null, 2)}\n`);
   }
 
-  const taggedIndexHtml = upsertGoogleTag(indexHtml);
+  const taggedIndexHtml = upsertGoogleTagManager(upsertGoogleTag(indexHtml));
   if (taggedIndexHtml !== indexHtml || replacements > 0) {
     indexHtml = taggedIndexHtml;
     await writeFile(indexPath, indexHtml);
