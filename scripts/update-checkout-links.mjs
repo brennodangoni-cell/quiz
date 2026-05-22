@@ -13,7 +13,7 @@ const checkoutLinks = {
 };
 
 const googleTagId = "AW-18172872375";
-const googleTagManagerId = "GTM-TKB3KG6W";
+const googleTagManagerId = "GTM-P243KFF7";
 const facebookPixelId = "1345365947541734";
 const trustBadgeImage = "334d0cf4-fe39-481c-8377-5da3b8ebe9e6";
 const opaqueTrustBadgeUrl = `/offer-assets/ofertafit.com/wp-content/uploads/2025/09/${trustBadgeImage}-white.webp`;
