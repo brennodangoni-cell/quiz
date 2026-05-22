@@ -58,10 +58,17 @@ const mobileRemovedStepIds = [
   "HHwovV",
 ];
 
-const removedStepIds = new Set([...desktopRemovedStepIds, ...mobileRemovedStepIds]);
+const eventStepIds = [
+  "PREcpy",
+  "OOlfmF",
+];
+
+const removedStepIds = new Set([...desktopRemovedStepIds, ...mobileRemovedStepIds, ...eventStepIds]);
 const replacementDestinations = new Map([
   ...desktopRemovedStepIds.map((id) => [id, "zMVOi8"]),
   ...mobileRemovedStepIds.map((id) => [id, "Dxvvj1"]),
+  ["PREcpy", "cFrEoi"],
+  ["OOlfmF", "3Akgkd"],
 ]);
 
 function md5(buffer) {
