@@ -22,8 +22,6 @@
       "U1W1Ee": "57.31",
       "aIABmd": "35.01",
       "abRcc0": "57.02",
-      "zMVOi8": "29.97",
-      "Dxvvj1": "45.99",
       "L5qb4e": "29.86",
       "8osXf7": "45.91",
       "YCHlNP": "29.81",
@@ -32,8 +30,6 @@
       "AJ5vEZ": "45.73",
       "xQQiZl": "29.68",
       "BD7GSv": "45.61",
-      "UjbVXd": "29.41",
-      "VUaI4N": "45.36",
       "cFrEoi": "29.13",
       "3Akgkd": "45.07",
       "gK13wl": "29.03",
@@ -1005,7 +1001,7 @@
             "name": "XK4iij",
             "type": "next",
             "label": "Continuar",
-            "destination": "zMVOi8",
+            "destination": "L5qb4e",
             "pulse": false,
             "target": false,
             "id": "mYPMCY"
@@ -1080,7 +1076,7 @@
             "name": "qkkXIn",
             "type": "next",
             "label": "Continuar",
-            "destination": "Dxvvj1",
+            "destination": "8osXf7",
             "pulse": false,
             "target": false,
             "id": "mYPMCY"
@@ -1090,182 +1086,6 @@
       "position": {
         "x": 1789.391550429941,
         "y": 259.0745171655937
-      },
-      "chosen": false,
-      "selected": false
-    },
-    {
-      "id": "zMVOi8",
-      "title": "p31",
-      "layers": [
-        {
-          "id": "igv3p4",
-          "title": "Múltipla Escolha",
-          "icon": "listCheck",
-          "type": "options",
-          "design": {
-            "icon": "none",
-            "iconPosition": "end",
-            "grid": "grid-cols-1",
-            "orientation": "horizontal",
-            "order": "default",
-            "transparentImage": true,
-            "aspectImage": "auto",
-            "basis": 100,
-            "background": "default"
-          },
-          "content": {
-            "name": "opcoes_Nt7VjF",
-            "required": true,
-            "multiple": false,
-            "introType": "text",
-            "introduction": "<h2 class=\"ql-align-center\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(31, 31, 31);\">Quão&nbsp;motivado&nbsp;você&nbsp;está&nbsp;para&nbsp;perder&nbsp;peso?</span></h2><h2 class=\"ql-align-center\"></h2>",
-            "options": [
-              {
-                "id": "MgftvD",
-                "label": "<p><span style=\"color: rgb(9, 9, 11); background-color: inherit;\">Estou&nbsp;tentando&nbsp;fazer&nbsp;o&nbsp;jejum&nbsp;apenas&nbsp;por&nbsp;curiosidade</span></p>",
-                "chosen": false,
-                "selected": false,
-                "image": {
-                  "type": "emoji",
-                  "src": "🤔"
-                },
-                "destination": "L5qb4e"
-              },
-              {
-                "id": "sJl0Ou",
-                "image": {
-                  "type": "emoji",
-                  "src": "🤘"
-                },
-                "score": 1,
-                "value": null,
-                "label": "<p><span style=\"color: rgb(9, 9, 11); background-color: inherit;\">Estou&nbsp;determinado&nbsp;a&nbsp;diminuir&nbsp;um&nbsp;ou&nbsp;dois&nbsp;tamanhos</span></p>",
-                "destination": "L5qb4e",
-                "chosen": false,
-                "selected": false
-              },
-              {
-                "id": "HOKtcs",
-                "label": "<p><span style=\"background-color: inherit; color: rgb(9, 9, 11);\">Eu&nbsp;não&nbsp;vou&nbsp;parar&nbsp;até&nbsp;atingir&nbsp;meu&nbsp;peso&nbsp;ideal</span></p>",
-                "chosen": false,
-                "selected": false,
-                "image": {
-                  "type": "emoji",
-                  "src": "🔥"
-                },
-                "destination": "L5qb4e"
-              }
-            ],
-            "type": "multiple",
-            "id": "x50y7A",
-            "awaitSubmit": false
-          }
-        },
-        {
-          "id": "exVNh3",
-          "title": "Espaço",
-          "icon": "arrowsV",
-          "type": "clear",
-          "design": [],
-          "content": {
-            "clear": "h-[1rem]",
-            "id": "wUmiQJ",
-            "name": "DWFwBE"
-          }
-        }
-      ],
-      "position": {
-        "x": 16042,
-        "y": -180
-      },
-      "chosen": false,
-      "selected": false
-    },
-    {
-      "id": "Dxvvj1",
-      "title": "p31-b",
-      "layers": [
-        {
-          "id": "sGbvvz",
-          "title": "Múltipla Escolha",
-          "icon": "listCheck",
-          "type": "options",
-          "design": {
-            "icon": "none",
-            "iconPosition": "end",
-            "grid": "grid-cols-1",
-            "orientation": "horizontal",
-            "order": "default",
-            "transparentImage": true,
-            "aspectImage": "auto",
-            "basis": 100,
-            "background": "default"
-          },
-          "content": {
-            "name": "opcoes_orJ7G8",
-            "required": true,
-            "multiple": false,
-            "introType": "text",
-            "introduction": "<h2 class=\"ql-align-center\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(31, 31, 31);\">Quão&nbsp;motivado&nbsp;você&nbsp;está&nbsp;para&nbsp;perder&nbsp;peso?</span></h2><h2 class=\"ql-align-center\"></h2>",
-            "options": [
-              {
-                "id": "4GVgFp",
-                "label": "<p><span style=\"color: rgb(9, 9, 11); background-color: inherit;\">Estou&nbsp;tentando&nbsp;fazer&nbsp;o&nbsp;jejum&nbsp;apenas&nbsp;por&nbsp;curiosidade</span></p>",
-                "chosen": false,
-                "selected": false,
-                "image": {
-                  "type": "emoji",
-                  "src": "🤔"
-                },
-                "destination": "8osXf7"
-              },
-              {
-                "id": "hFwtKG",
-                "image": {
-                  "type": "emoji",
-                  "src": "🤘"
-                },
-                "score": 1,
-                "value": null,
-                "label": "<p><span style=\"color: rgb(9, 9, 11); background-color: inherit;\">Estou&nbsp;determinado&nbsp;a&nbsp;diminuir&nbsp;um&nbsp;ou&nbsp;dois&nbsp;tamanhos</span></p>",
-                "destination": "8osXf7",
-                "chosen": false,
-                "selected": false
-              },
-              {
-                "id": "SYVGeu",
-                "label": "<p><span style=\"background-color: inherit; color: rgb(9, 9, 11);\">Eu&nbsp;não&nbsp;vou&nbsp;parar&nbsp;até&nbsp;atingir&nbsp;meu&nbsp;peso&nbsp;ideal</span></p>",
-                "chosen": false,
-                "selected": false,
-                "image": {
-                  "type": "emoji",
-                  "src": "🔥"
-                },
-                "destination": "8osXf7"
-              }
-            ],
-            "type": "multiple",
-            "id": "BiDUVs",
-            "awaitSubmit": false
-          }
-        },
-        {
-          "id": "BDjwUZ",
-          "title": "Espaço",
-          "icon": "arrowsV",
-          "type": "clear",
-          "design": [],
-          "content": {
-            "clear": "h-[1rem]",
-            "id": "DqxgAX",
-            "name": "qkGEwB"
-          }
-        }
-      ],
-      "position": {
-        "x": 16062,
-        "y": 154
       },
       "chosen": false,
       "selected": false
@@ -1798,7 +1618,7 @@
             "name": "yMzcwS",
             "type": "next",
             "label": "Continuar",
-            "destination": "UjbVXd",
+            "destination": "cFrEoi",
             "pulse": false,
             "target": false,
             "id": "IxnrmA"
@@ -1895,7 +1715,7 @@
             "name": "VgmW79",
             "type": "next",
             "label": "Continuar",
-            "destination": "VUaI4N",
+            "destination": "3Akgkd",
             "pulse": false,
             "target": false,
             "id": "8kLIwI"
@@ -1905,285 +1725,6 @@
       "position": {
         "x": 17726,
         "y": 118
-      },
-      "chosen": false,
-      "selected": false
-    },
-    {
-      "id": "UjbVXd",
-      "title": "p36",
-      "layers": [
-        {
-          "id": "QmuAxK",
-          "title": "Texto",
-          "icon": "text",
-          "type": "text",
-          "design": [],
-          "content": {
-            "text": "<h2 class=\"ql-align-center\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(31, 31, 31);\">Resumo&nbsp;do&nbsp;seu&nbsp;nível&nbsp;de&nbsp;condicionamento&nbsp;físico</span></h2><h2 class=\"ql-align-center\"></h2>",
-            "id": "3XJz5x",
-            "name": "a1D9iy"
-          }
-        },
-        {
-          "id": "UUeRDo",
-          "title": "Espaço",
-          "icon": "arrowsV",
-          "type": "clear",
-          "design": [],
-          "content": {
-            "clear": "h-[1rem]",
-            "id": "dJNNR8",
-            "name": "nu1KSP"
-          }
-        },
-        {
-          "id": "Jut7s6",
-          "title": "Nível",
-          "icon": "slidersH",
-          "type": "metric",
-          "design": {
-            "type": "default",
-            "color": "gradient",
-            "basis": 100
-          },
-          "content": {
-            "title": "Índice de massa corporal (IMC)",
-            "name": "UYG4xM",
-            "subtitle": "Normal - entre 18,4 e 25",
-            "percent": "83",
-            "show_title": true,
-            "show_percent": true,
-            "show_dot": true,
-            "id": "X5zuDd",
-            "legends": "Anormal, Normal, Obesa"
-          }
-        },
-        {
-          "id": "PqH06z",
-          "title": "Espaço",
-          "icon": "arrowsV",
-          "type": "clear",
-          "design": [],
-          "content": {
-            "clear": "h-[1rem]",
-            "id": "lxLlH7",
-            "name": "iRIz2H"
-          }
-        },
-        {
-          "id": "SHmI5X",
-          "title": "Imagem",
-          "icon": "image",
-          "type": "image",
-          "design": {
-            "basis": "35",
-            "verticalAlign": "self-auto",
-            "horizontalAlign": "mx-auto"
-          },
-          "content": {
-            "image": {
-              "src": "https://media.inlead.cloud/uploads/44422/2026-01-04/TaJwB-6zfxb-fastingunimealcom-fasting-woman-step-summarysurface-pro-7-1.png",
-              "type": "image",
-              "width": 155,
-              "height": 285
-            },
-            "id": "vhwzzr",
-            "name": "77SOE8"
-          }
-        },
-        {
-          "id": "w3BGxq",
-          "title": "Alerta",
-          "icon": "exclamationTriangle",
-          "type": "alert",
-          "design": {
-            "style": "warning",
-            "basis": 100
-          },
-          "content": {
-            "text": "<p><strong>Sua&nbsp;situação&nbsp;é&nbsp;preocupante!</strong></p><p>Parabéns&nbsp;por&nbsp;dar&nbsp;o&nbsp;primeiro&nbsp;passo.&nbsp;Vamos&nbsp;criar&nbsp;um&nbsp;plano&nbsp;personalizado&nbsp;para&nbsp;acelerar&nbsp;seu&nbsp;metabolismo,&nbsp;aumentar&nbsp;sua&nbsp;força&nbsp;e&nbsp;melhorar&nbsp;sua&nbsp;saúde.</p>",
-            "id": "xFzEfc",
-            "name": "VdGa81"
-          }
-        },
-        {
-          "id": "jfxnwD",
-          "title": "Espaço",
-          "icon": "arrowsV",
-          "type": "clear",
-          "design": [],
-          "content": {
-            "clear": "h-[1rem]",
-            "id": "RVCTxY",
-            "name": "4ByAt4"
-          }
-        },
-        {
-          "id": "H4ke1E",
-          "title": "Botão",
-          "icon": "rectangleWide",
-          "type": "button",
-          "design": {
-            "style": "theme",
-            "basis": 100,
-            "pulse": true
-          },
-          "content": {
-            "name": "5ywTRu",
-            "type": "next",
-            "label": "Continuar",
-            "destination": "cFrEoi",
-            "pulse": false,
-            "target": false,
-            "id": "DrcfRd"
-          }
-        }
-      ],
-      "position": {
-        "y": -259,
-        "x": 18139
-      },
-      "chosen": false,
-      "selected": false,
-      "options": {
-        "show_progress": true,
-        "show_back": false
-      }
-    },
-    {
-      "id": "VUaI4N",
-      "title": "p36-b",
-      "layers": [
-        {
-          "id": "UGsijb",
-          "title": "Texto",
-          "icon": "text",
-          "type": "text",
-          "design": [],
-          "content": {
-            "text": "<h2 class=\"ql-align-center\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(31, 31, 31);\">Resumo&nbsp;do&nbsp;seu&nbsp;nível&nbsp;de&nbsp;condicionamento&nbsp;físico</span></h2><h2 class=\"ql-align-center\"></h2>",
-            "id": "j06gzQ",
-            "name": "hayDKU"
-          }
-        },
-        {
-          "id": "AdXDC5",
-          "title": "Espaço",
-          "icon": "arrowsV",
-          "type": "clear",
-          "design": [],
-          "content": {
-            "clear": "h-[1rem]",
-            "id": "w7sIQf",
-            "name": "xntiNi"
-          }
-        },
-        {
-          "id": "IWSNhA",
-          "title": "Nível",
-          "icon": "slidersH",
-          "type": "metric",
-          "design": {
-            "type": "default",
-            "color": "gradient",
-            "basis": 100
-          },
-          "content": {
-            "title": "Índice de massa corporal (IMC)",
-            "name": "fsXK6j",
-            "subtitle": "Normal - entre 18,4 e 25",
-            "percent": "83",
-            "show_title": true,
-            "show_percent": true,
-            "show_dot": true,
-            "id": "Skv8DK",
-            "legends": "Anormal, Normal, Obeso"
-          }
-        },
-        {
-          "id": "TY0HSO",
-          "title": "Espaço",
-          "icon": "arrowsV",
-          "type": "clear",
-          "design": [],
-          "content": {
-            "clear": "h-[1rem]",
-            "id": "Frtoif",
-            "name": "uCzioc"
-          }
-        },
-        {
-          "id": "tObKIp",
-          "title": "Imagem",
-          "icon": "image",
-          "type": "image",
-          "design": {
-            "basis": "45",
-            "horizontalAlign": "mx-auto"
-          },
-          "content": {
-            "image": {
-              "src": "https://media.inlead.cloud/uploads/44422/2026-01-04/gP049-sm-s1kmr-sm-vthe1-clipboard-image-1736446306-1-1.webp",
-              "type": "image",
-              "width": 200,
-              "height": 285
-            },
-            "id": "smRMgR",
-            "name": "ObD59F"
-          }
-        },
-        {
-          "id": "sMpmKJ",
-          "title": "Alerta",
-          "icon": "exclamationTriangle",
-          "type": "alert",
-          "design": {
-            "style": "warning",
-            "basis": 100
-          },
-          "content": {
-            "text": "<p><strong>Sua&nbsp;situação&nbsp;é&nbsp;preocupante!</strong></p><p>Parabéns&nbsp;por&nbsp;dar&nbsp;o&nbsp;primeiro&nbsp;passo.&nbsp;Vamos&nbsp;criar&nbsp;um&nbsp;plano&nbsp;personalizado&nbsp;para&nbsp;acelerar&nbsp;seu&nbsp;metabolismo,&nbsp;aumentar&nbsp;sua&nbsp;força&nbsp;e&nbsp;melhorar&nbsp;sua&nbsp;saúde.</p>",
-            "id": "FpSM4n",
-            "name": "iS6MvL"
-          }
-        },
-        {
-          "id": "IAn81q",
-          "title": "Espaço",
-          "icon": "arrowsV",
-          "type": "clear",
-          "design": [],
-          "content": {
-            "clear": "h-[1rem]",
-            "id": "CZpgWp",
-            "name": "KzrgAe"
-          }
-        },
-        {
-          "id": "qmXFnS",
-          "title": "Botão",
-          "icon": "rectangleWide",
-          "type": "button",
-          "design": {
-            "style": "theme",
-            "basis": 100,
-            "pulse": true
-          },
-          "content": {
-            "name": "W7hyNw",
-            "type": "next",
-            "label": "Continuar",
-            "destination": "3Akgkd",
-            "pulse": false,
-            "target": false,
-            "id": "D3Hct7"
-          }
-        }
-      ],
-      "position": {
-        "x": 18070.870550563297,
-        "y": 126
       },
       "chosen": false,
       "selected": false
@@ -4980,10 +4521,7 @@
     "elementSize": "56px"
   },
   "navigation": [],
-  "scripts": {
-    "facebook": "1173079407984546",
-    "header": "<!-- Meta Pixel Code -->\n<script>\n!function(f,b,e,v,n,t,s)\n{if(f.fbq)return;n=f.fbq=function(){n.callMethod?\nn.callMethod.apply(n,arguments):n.queue.push(arguments)};\nif(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';\nn.queue=[];t=b.createElement(e);t.async=!0;\nt.src=v;s=b.getElementsByTagName(e)[0];\ns.parentNode.insertBefore(t,s)}(window, document,'script',\n'https://connect.facebook.net/en_US/fbevents.js');\nfbq('init', '1173079407984546');\nfbq('track', 'PageView');\n</script>\n<noscript><img height=\"1\" width=\"1\" style=\"display:none\"\nsrc=\"https://www.facebook.com/tr?id=1173079407984546&ev=PageView&noscript=1\"\n/></noscript>\n<!-- End Meta Pixel Code -->"
-  },
+  "scripts": {},
   "webhook": [],
   "seo": [],
   "version": "v1"

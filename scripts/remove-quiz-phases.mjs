@@ -63,12 +63,34 @@ const eventStepIds = [
   "OOlfmF",
 ];
 
-const removedStepIds = new Set([...desktopRemovedStepIds, ...mobileRemovedStepIds, ...eventStepIds]);
+const motivationStepIds = [
+  "zMVOi8",
+  "Dxvvj1",
+];
+
+const fitnessSummaryStepIds = [
+  "UjbVXd",
+  "VUaI4N",
+];
+
+const legacyFacebookPixelId = "1173079407984546";
+
+const removedStepIds = new Set([
+  ...desktopRemovedStepIds,
+  ...mobileRemovedStepIds,
+  ...eventStepIds,
+  ...motivationStepIds,
+  ...fitnessSummaryStepIds,
+]);
 const replacementDestinations = new Map([
-  ...desktopRemovedStepIds.map((id) => [id, "zMVOi8"]),
-  ...mobileRemovedStepIds.map((id) => [id, "Dxvvj1"]),
+  ...desktopRemovedStepIds.map((id) => [id, "L5qb4e"]),
+  ...mobileRemovedStepIds.map((id) => [id, "8osXf7"]),
   ["PREcpy", "cFrEoi"],
   ["OOlfmF", "3Akgkd"],
+  ["zMVOi8", "L5qb4e"],
+  ["Dxvvj1", "8osXf7"],
+  ["UjbVXd", "cFrEoi"],
+  ["VUaI4N", "3Akgkd"],
 ]);
 
 function md5(buffer) {
@@ -201,6 +223,36 @@ function removeQuizPhases(funnel) {
   };
 }
 
+function removeLegacyFacebookPixel(funnel) {
+  const scripts = funnel.scripts;
+  if (!scripts || typeof scripts !== "object") return 0;
+
+  let removed = 0;
+  if (scripts.facebook === legacyFacebookPixelId) {
+    delete scripts.facebook;
+    removed += 1;
+  }
+
+  for (const key of ["header", "body", "footer"]) {
+    if (typeof scripts[key] !== "string" || !scripts[key].includes(legacyFacebookPixelId)) continue;
+    const withoutPixel = scripts[key]
+      .replace(
+        /\s*<!--\s*(?:Meta|Facebook) Pixel Code\s*-->[\s\S]*?<!--\s*End (?:Meta|Facebook) Pixel Code\s*-->\s*/gi,
+        "\n"
+      )
+      .trim();
+
+    if (withoutPixel) {
+      scripts[key] = withoutPixel;
+    } else {
+      delete scripts[key];
+    }
+    removed += 1;
+  }
+
+  return removed;
+}
+
 async function main() {
   const indexPath = path.join(root, "index.html");
   const capturedFunnelPath = path.join(root, "captured", "funnel.json");
@@ -209,10 +261,14 @@ async function main() {
   const funnel = decodeFunnelPayload(currentPayload);
 
   const result = removeQuizPhases(funnel);
+  const legacyFacebookPixelRemoved = removeLegacyFacebookPixel(funnel);
+  result.legacyFacebookPixelRemoved = legacyFacebookPixelRemoved;
+
   const changed =
     result.removedCount > 0 ||
     result.destinationRewrites > 0 ||
-    result.performanceEntriesRemoved > 0;
+    result.performanceEntriesRemoved > 0 ||
+    legacyFacebookPixelRemoved > 0;
 
   if (changed) {
     const nextPayload = encodeFunnelPayload(funnel, currentPayload);
